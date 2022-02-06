@@ -34,8 +34,8 @@ public class Main implements BatteryParameters{
 
     public static void main(String[] args) {
         BatteryParameters mI = new simpleMonitor();
-        assert(batteryIsOk(mI.tempCheck(50), mI.socCheck(85), mI.chargeRateCheck(0.0f) == false));
-        assert(batteryIsOk(mI.tempCheck(42), mI.socCheck(70), mI.chargeRateCheck(0.07f) == true));
+        assert(batteryIsOk(mI.tempCheck(50), mI.socCheck(85), mI.chargeRateCheck(0.0f)) == false);
+        assert(batteryIsOk(mI.tempCheck(42), mI.socCheck(70), mI.chargeRateCheck(0.07f)) == true);
         System.out.println("Some more tests needed");
     }
 }
