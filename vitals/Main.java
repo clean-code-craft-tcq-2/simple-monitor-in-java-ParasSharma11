@@ -36,7 +36,6 @@ public class Main implements monitorInterface{
         monitorInterface mI = new simpleMonitor();
         assert(batteryIsOk(42,70,0.07f,mI) == true);
         assert(batteryIsOk(50, 85, 0.0f,mI) == false);
-        //java -ea alerter.java
         System.out.println("Some more tests needed");
     }
 }
