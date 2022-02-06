@@ -1,8 +1,8 @@
 package vitals;
     
-public class Main implements monitorInterface{
-    static boolean batteryIsOk(float temperature, float soc, float chargeRate, monitorInterface mI) {
-        if(mI.tempCheck(temperature) && mI.socCheck(soc) && mI.chargeRateCheck(chargeRate)) {
+public class Main implements BatteryParameters{
+    static boolean batteryIsOk(boolean temperature, boolean soc, boolean chargeRate) {
+        if(temperature && soc && chargeRate) {
         return true;
         }
         else return false;
@@ -33,11 +33,12 @@ public class Main implements monitorInterface{
     }
 
     public static void main(String[] args) {
-        monitorInterface mI = new simpleMonitor();
-        assert(batteryIsOk(42,70,0.07f,mI) == true);
-        assert(batteryIsOk(50, 85, 0.0f,mI) == false);
+        BatteryParameters mI = new simpleMonitor();
+        assert(batteryIsOk(mI.tempCheck(50), mI.socCheck(85), mI.chargeRateCheck(0.0f) == false));
+        assert(batteryIsOk(mI.tempCheck(42), mI.socCheck(70), mI.chargeRateCheck(0.07f) == true));
         System.out.println("Some more tests needed");
     }
 }
+
 
 
