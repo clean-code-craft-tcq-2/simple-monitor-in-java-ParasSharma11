@@ -2,11 +2,8 @@ package vitals;
     
 public class Main implements BatteryParameters{
     static boolean batteryIsOk(boolean temperature, boolean soc, boolean chargeRate) {
-        if(temperature && soc && chargeRate) {
-        return true;
+        return temperature && soc && chargeRate;
         }
-        else return false;
-    }
     
     public boolean tempCheck(float temperature){
          if(temperature < 0 || temperature > 45) {
