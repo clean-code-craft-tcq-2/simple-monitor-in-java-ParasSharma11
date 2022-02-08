@@ -1,6 +1,6 @@
 package vitals;
 public class testSimpleMonitor   {
-    simpleMonitor mI = new simpleMonitor();
+    Main mI = new Main();
     public void  test_temperature_ok(float temperature,boolean expected_result) {
         assert(mI.tempCheck(temperature) == expected_result);
     }
