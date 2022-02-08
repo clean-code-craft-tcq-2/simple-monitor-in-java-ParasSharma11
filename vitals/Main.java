@@ -30,7 +30,7 @@ public class Main implements BatteryParameters{
     }
 
      public static void main(String[] args) {
-          testsimple test = new testsimple();
+          testSimpleMonitor test = new testSimpleMonitor();
              test.temperature_validation();
              test.SOC_validation();
              test.Charge_rate_validation();
