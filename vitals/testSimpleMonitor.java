@@ -30,7 +30,7 @@ public class testSimpleMonitor   {
         }
     
     public void   test_battery_ok1() {
-        assert(mI.batteryIsOk(mI.tempCheck(50), mI.socCheck(85), mI.chargeRateCheck(0.0f)) == false);
-        assert(mI.batteryIsOk(mI.tempCheck(42), mI.socCheck(70), mI.chargeRateCheck(0.07f) == true));
+        assert(mI.batteryIsOk(50, 85, 0.0f) == false);
+        assert(mI.batteryIsOk(42, 70, 0.07f) == true);
         }
 }
