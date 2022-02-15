@@ -1,29 +1,54 @@
 package vitals;
     
-public class Main implements BatteryParameters{
-    static boolean batteryIsOk(boolean temperature, boolean soc, boolean chargeRate) {
-        return temperature && soc && chargeRate;
-        }
-    
-    public boolean tempCheck(float temperature){
-         if(temperature < 0 || temperature > 45) {
-             System.out.println("Temperature is out of range!");
-             return false;
-         }
-        return true;
+public class Main{
+    static boolean batteryIsOk(float temperature, float  soc, float chargeRate) {
+            Temperature tempObj = ( float value) -> tempCheck(value);
+            soc socObj = (float value) -> socCheck(value);
+            chargeRate chargeRateObj = ( float value) -> chargeRateCheck(value);
+            
+            return tempObj.Check(temperature) && socObj.Check(soc) && chargeRateObj.Check(chargeRate);
+            }
+    static void print(String msg) {
+        System.out.println(msg);
     }
-    
-    public boolean socCheck(float soc){
-        if(soc < 20 || soc > 80) {
-            System.out.println("State of Charge is out of range!");
+    interface Temperature {
+        boolean Check(final float temp);
+    }
+
+    interface soc {
+        boolean Check(final float temp);
+    }
+
+    interface chargeRate {
+        boolean Check(final float temp);
+    }
+
+    static boolean checkRange(float low, float high, float value) {
+        if (value < low || value > high)
+            return true;
+        else
+            return false;
+    }
+
+    static boolean tempCheck(float temperature) {
+        if (checkRange(0,45,temperature)) {
+            print("Temperature is out of range!");
             return false;
         }
         return true;
     }
-    
-    public boolean chargeRateCheck(float chargeRate){
-        if(chargeRate > 0.8) {
-            System.out.println("Charge Rate is out of range!");
+
+    static boolean socCheck(float soc) {
+        if (checkRange(0,45,soc)) {
+            print("soc is out of range!");
+            return false;
+        }
+        return true;
+    }
+
+    static boolean chargeRateCheck(float chargeRate) {
+        if (chargeRate > 0.8) {
+            print("Charge Rate is out of range!");
             return false;
         }
         return true;
