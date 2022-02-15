@@ -29,8 +29,25 @@ public class Main{
         else
             return false;
     }
+    static boolean warnOnUpperLimit(final float batteryCondition, final float upperLimit){
+        return batteryCondition >= (upperLimit - 0.05*upperLimit);
+        
+    }
+    static boolean warnOnLowerLimit(final float batteryCondition, final float lowerLimit){
+        return batteryCondition <= (lowerLimit + 0.05*lowerLimit);
+        
+    }
+      static void checkWaringForupperAndLowerLimit(final float batteryCondition, final float lowerLimit, final float upperLimit) {
+          if(warnOnUpperLimit(batteryCondition,upperLimit)) {
+              print("Warning reaching to upper value");
+          }
+          if(warnOnLowerLimit(batteryCondition,lowerLimit)) {
+              print("Warning reaching to lower value");
+          }
+       }
 
     static boolean tempCheck(float temperature) {
+        checkWaringForupperAndLowerLimit(temperature,0,45);
         if (checkRange(0,45,temperature)) {
             print("Temperature is out of range!");
             return false;
@@ -39,6 +56,7 @@ public class Main{
     }
 
     static boolean socCheck(float soc) {
+        checkWaringForupperAndLowerLimit(soc,0,45);
         if (checkRange(20,80,soc)) {
             print("soc is out of range!");
             return false;
