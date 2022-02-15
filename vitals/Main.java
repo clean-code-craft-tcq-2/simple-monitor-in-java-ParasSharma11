@@ -39,7 +39,7 @@ public class Main{
     }
 
     static boolean socCheck(float soc) {
-        if (checkRange(0,45,soc)) {
+        if (checkRange(20,80,soc)) {
             print("soc is out of range!");
             return false;
         }
